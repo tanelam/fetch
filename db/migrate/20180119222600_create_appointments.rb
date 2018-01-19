@@ -1,9 +1,8 @@
 class CreateAppointments < ActiveRecord::Migration[5.1]
   def change
     create_table :appointments do |t|
-      t.date :begin
-      t.date :end
-      t.belongs_to :user 
+      t.integer :cuddle_buddy_id
+      t.integer :sitter_id
       t.timestamps
     end
   end
