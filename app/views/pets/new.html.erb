@@ -1,0 +1,24 @@
+
+<h4>Add Your Pet</h4>
+
+<% if flash[:error] %>
+ <ul>
+   <% flash[:error].each do |error| %>
+   <li><%= error %></li>
+   <% end %>
+ </ul>
+<% end %>
+
+<%= form_for @pet do |f| %>
+<p><%= f.label :name %>
+<%= f.text_field :name %></p>
+<p><%= f.label :owner_id %>
+<%= f.text_field :owner_id %></p>
+<p><%= f.label :species %>
+<%= f.collection_select :species_id, Species.all, :id, :name %></p>
+<%= f.file_field :pet_photo %>
+<p><%= f.label :bio %>:</p>
+<p><%= f.text_area :bio, cols: 50, rows: 15 %></p>
+<br/>
+<%= f.submit %>
+<% end %>
