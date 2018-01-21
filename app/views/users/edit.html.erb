@@ -1,0 +1,23 @@
+<h1>CHANGE YOUR CuddleBuddies_NAME:</h1>
+
+
+<% if flash[:error] %>
+ <ul>
+   <% flash[:error].each do |error| %>
+   <li><%= error %></li>
+   <% end %>
+ </ul>
+<% end %>
+
+<%= form_for @user do |f| %>
+
+  <%= f.label :name, "New User Name: " %>
+  <%= f.text_field :name %>
+
+  <br/>
+  <br/>
+
+  <%= f.submit %>
+<%end %>
+<br/>
+  <%= button_to "Delete", @user, method: :delete %>
