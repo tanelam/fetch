@@ -1,6 +1,3 @@
-<h1>Sign up :) </h1>
-
-
 <% if flash[:error] %>
  <ul>
    <% flash[:error].each do |error| %>
@@ -9,14 +6,11 @@
  </ul>
 <% end %>
 
+<h1>Sign up</h1>
+
 <%= form_for @user do |f| %>
-  <br/>
-
-  <%= f.label :name, "User Name: " %>
-
-  <%= f.text_field :name  %><br/>
-
-  <br/>
-
-  <%= f.submit %>
-  <%end %>
+  Username: <%= f.text_field :user_name %><br/>
+  Password: <%= f.password_field :password %><br/>
+  Password Confirmation: <%= f.password_field :password_confirmation %><br/>
+  <%= f.submit "Submit" %>
+<% end %>
