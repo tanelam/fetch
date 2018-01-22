@@ -1,8 +1,8 @@
 class PetsController < ApplicationController
 
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
-
   before_action :set_pets, only: [:index]
+  before_action :require_login
 
   def index
   end
@@ -22,7 +22,7 @@ class PetsController < ApplicationController
       redirect_to @pet
     else
       flash[:error] = @pet.errors.full_messages
-      render :new
+      redirect_to new_pet_path
     end
   end
 
@@ -38,7 +38,7 @@ class PetsController < ApplicationController
       redirect_to @pet
     else
       flash[:error] = pet.errors.full_messages
-      render :edit
+      redirect_to edit_pet_path
     end
   end
 
@@ -49,6 +49,10 @@ class PetsController < ApplicationController
   end
 
   private
+
+  def require_login
+     return head(:forbidden) unless session.include? :user_id
+   end
 
   def set_pet
     @pet = Pet.find_by(id: params[:id])
