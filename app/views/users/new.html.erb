@@ -1,4 +1,7 @@
-<h1>Sign up :) </h1>
+
+<div class="page-header">
+  <h1>Sign up :) </h1>
+</div>
 
 
 <% if flash[:error] %>
@@ -12,11 +15,11 @@
 <%= form_for @user do |f| %>
   <br/>
 
-  <%= f.label :name, "User Name: " %>
+  <p><%= f.label :name, "User Name: " %>
 
-  <%= f.text_field :name  %><br/>
+     <%= f.text_field :name  %></p><br/>
 
   <br/>
+  <p><%= f.submit %></p>
 
-  <%= f.submit %>
   <%end %>
