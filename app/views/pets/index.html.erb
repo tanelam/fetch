@@ -1,8 +1,12 @@
 
 
-<h4>All CuddleBuddies</h4>
+<div class="page-header">
+  <h1>All CuddleBuddies</h1>
+</div>
+
+
 <ul>
-<% @pets.each do |pet| %>
-<li><%= link_to pet.name, pet %></li>
-<% end %>
+  <% @pets.each do |pet| %>
+  <li><%= link_to pet.name, pet %></li>
+  <% end %>
 </ul>
