@@ -10,8 +10,13 @@ Rails.application.routes.draw do
    post   '/login',   to: 'sessions#create'
    delete '/logout',  to: 'sessions#destroy'
 
-  resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
-  resources :pets
+   get 'user/:id/pets/new' to 'pets#new'
+   #user/pet
+  resources :pets, only: [:index]
+
+  resources :users, only: [:new, :create, :show, :edit, :update, :destroy] do
+  resources :pets, only: [:new, :create, :show, :edit, :update, :destroy]
+    end
   resources :sessions, only: [:new, :create, :destroy]
 
 end

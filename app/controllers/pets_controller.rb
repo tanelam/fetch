@@ -2,9 +2,11 @@ class PetsController < ApplicationController
 
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
   before_action :set_pets, only: [:index]
-  before_action :require_login
+  # before_action :require_login
 
   def index
+    # @
+    # if @user.pets.empty?
   end
 
   def show
@@ -17,8 +19,12 @@ class PetsController < ApplicationController
   def create
     # byebug
     @pet = Pet.new(pet_params)
+      # byebug
+      current_user = User.find_by(id: session[:user_id])
+      @pet.owner_id = current_user.id
     if @pet.valid?
       @pet.save
+
       redirect_to @pet
     else
       flash[:error] = @pet.errors.full_messages
@@ -63,7 +69,7 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :owner_id, :species_id, :pet_photo, :bio)
+    params.require(:pet).permit(:name, :species_id, :pet_photo, :bio)
   end
 
 end

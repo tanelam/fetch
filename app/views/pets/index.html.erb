@@ -7,6 +7,6 @@
 
 <ul>
   <% @pets.each do |pet| %>
-  <li><%= link_to pet.name, pet %></li>
+  <li><%= link_to pet.name, user_pet_url %></li>
   <% end %>
 </ul>
