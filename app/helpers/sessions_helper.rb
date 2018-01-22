@@ -1,5 +1,5 @@
 module SessionsHelper
-
+  before_action :authorized
   def log_in(user)
     session[:user_id] = user.id
   end
@@ -9,7 +9,12 @@ module SessionsHelper
   end
 
   def logged_in?
-   !current_user.nil?
+   !!current_user
+   #will return nil if session user id fails or if find by fails
+  end
+
+  def authorized
+    redirect to login_path unless logged_in?
   end
 
   def log_out

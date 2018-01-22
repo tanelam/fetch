@@ -1,9 +1,20 @@
 class UsersController < ApplicationController
   before_action :user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorized, [:new, :create]
 
   def new
     @user = User.new
   end
+  #
+  # if sessions[:user_id]
+  #   @user = User.find(session[:user_id])
+  #   @pets = User.pets
+  # end
+
+  # if logged_in?
+  #   stuff here
+  # else
+  # end
 
   def create
     @user = User.new(user_params)
@@ -46,7 +57,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation)
+    params.require(:user).permit(:user_name, :password, :password_confirmation)
   end
 
   def user
