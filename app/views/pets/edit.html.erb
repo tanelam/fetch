@@ -1,4 +1,4 @@
-<h4>Add Your Pet</h4>
+<h4>Edit Your Pet</h4>
 
 <% if flash[:error] %>
  <ul>
@@ -8,13 +8,16 @@
  </ul>
 <% end %>
 
-<%= form_for @pet do |f| %>
+<%= form_for [@user, @pet] do |f| %>
   <p><%= f.label :name %>
   <%= f.text_field :name %></p>
   <p><%= f.label :species %>
   <%= f.collection_select :species_id, Species.all, :id, :name %></p>
+  <%= f.file_field :pet_photo %>
   <p><%= f.label :bio %>:</p>
-  <p><%= f.text_area :bio, cols: 50, rows: 15  %></p>
+  <p><%= f.text_area :bio, cols: 30, rows: 8 %></p>
   <br/>
-  <%= f.submit %>
-<% end %>
+  <p><%= f.submit %></p>
+  <% end %>
+  <br/><br/>
+  <%= button_to "Remove Pet", [@user, @pet], method: :delete %>

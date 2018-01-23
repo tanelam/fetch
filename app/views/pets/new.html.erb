@@ -12,7 +12,7 @@
  </ul>
 <% end %>
 
-<%= form_for @pet do |f| %>
+<%= form_for [@user,@pet] do |f| %>
   <p><%= f.label :name %>
   <%= f.text_field :name %></p>
   <p><%= f.label :species %>

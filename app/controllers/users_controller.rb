@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   before_action :user, only: [:show, :edit, :update, :destroy]
   # skip_before_action :authorized, [:new, :create]
+  before_action :user_pets, only: [:pets]
+  
+
+  def pets
+
+  end
 
   def new
     @user = User.new
@@ -51,9 +57,6 @@ class UsersController < ApplicationController
     # log them out of web page
   end
 
-  def bye
-  end
-
   private
 
   def user_params
@@ -61,7 +64,12 @@ class UsersController < ApplicationController
   end
 
   def user
-    @user = User.find(params[:id])
+    @user = User.find_by(id: session[:user_id])
+  end
+
+  def user_pets
+    @user = User.find_by(id: session[:user_id])
+    @user_pets = @user.pets
   end
 
 end

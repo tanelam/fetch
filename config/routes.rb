@@ -10,13 +10,21 @@ Rails.application.routes.draw do
    post   '/login',   to: 'sessions#create'
    delete '/logout',  to: 'sessions#destroy'
 
-   get 'user/:id/pets/new' to 'pets#new'
+   # get 'user/:id/pets/new' to 'pets#new'
    #user/pet
-  resources :pets, only: [:index]
+   get '/pets', to: 'pets#index', as: 'pets'
 
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy] do
-  resources :pets, only: [:new, :create, :show, :edit, :update, :destroy]
-    end
+    get "/pets", to: 'users#pets'
+    resources :pets
+    # get '/pets/new', to: 'pets#new'
+    # get '/pets/:id', to: 'pets#show', as: 'show_pet'
+    # get '/pets/:id/edit', to: 'pets#edit', as: 'pet'
+    # post '/pets', to: 'pets#create'
+    # patch '/pets/:id/edit', to: 'pets#update', as: 'edit_pet'
+    # delete '/pets/:id', to: 'pets#destroy'
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
 
 end

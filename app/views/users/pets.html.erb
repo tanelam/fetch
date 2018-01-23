@@ -1,0 +1,13 @@
+
+
+<h4>Your Pets</h4>
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
+
+  <figure>
+    <% @user_pets.each do |pet| %>
+    <img src='<%= pet.pet_photo %>' alt='missing' style="max-height: 500px; max-width: 300px"/>
+    <figcaption><b>Name: <%= link_to pet.name, user_pet_path(id: pet.id) %></b></figcaption>
+      <% end %>
+    </figure>
