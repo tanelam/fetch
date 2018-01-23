@@ -8,4 +8,10 @@
 <p>Owner: <%= @pet.owner.user_name %></p>
 <p>About Me: <%= @pet.bio %></p>
 <br/>
-<%= button_to "Edit Pet", edit_user_pet_path(id: @pet.id), method: :get %>
+
+
+<% if @user.id == @pet.owner_id%>
+<%= button_to "Edit Pet", user_edit_pet_path(id: @pet.id, user_id: @user.id), method: :get %>
+<% else %>
+<%= link_to "Cuddle with this Buddy", user_new_appointment_path(user_id: @user.id, pet_id: @pet.id) %>
+<% end %>

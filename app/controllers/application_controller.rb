@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :logged_in?
+  helper_method :logged_in?, :current_user
 
   # before_action :authorized
+
+  # def reroute
+  #   user_new_appointment(user_id: session[:user_id], pet_id: params.permit[:pet_id])
+  # end
 
   def log_in(user)
     session[:user_id] = user.id

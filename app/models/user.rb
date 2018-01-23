@@ -7,17 +7,10 @@ class User < ApplicationRecord
   validates :user_name, presence: true
   validates :user_name, uniqueness: true
   validates :user_name, uniqueness: { case_sensitive: false }
-
+  validates :user_name, format: {without: /\s/, message:"must contain no spaces"}
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
-  accepts_nested_attributes_for :pets
-
-    # Returns the hash digest of the given string.
-  # def User.digest(string)
-  #   cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-  #                                                   BCrypt::Engine.cost
-  #   BCrypt::Password.create(string, cost: cost)
-  # end
+  # accepts_nested_attributes_for :pets
 
 end

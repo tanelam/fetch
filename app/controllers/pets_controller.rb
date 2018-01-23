@@ -5,9 +5,14 @@ class PetsController < ApplicationController
   # before_action :require_login
 
   def index
+    @user = User.find_by(id: session[:user_id])
+    @not_user_pets = @pets.select{|pet| pet.owner_id != @user.id }
   end
 
   def show
+    @user = User.find_by(id: session[:user_id])
+    @pet = Pet.find(params[:id])
+   # byebug
   end
 
   def new
@@ -20,7 +25,7 @@ class PetsController < ApplicationController
     @newpet = @current_user.pets.new(pet_params)
     if @newpet.valid?
       @newpet.save
-      redirect_to user_pet_path(id: @newpet.id)
+      redirect_to pet_path(id: @newpet.id)
     else
       flash[:error] = @newpet.errors.full_messages
       redirect_to  user_pets_new_path
@@ -30,7 +35,6 @@ class PetsController < ApplicationController
   def edit
     @pet = Pet.find_by(id: params[:id])
     @user = User.find_by(id: session[:user_id])
-      # byebug
   end
 
   def update
@@ -38,10 +42,10 @@ class PetsController < ApplicationController
     # byebug
     if @pet.valid?
       @pet.update(pet_params)
-      redirect_to user_pet_path(id: @pet.id)
+      redirect_to pet_path(id: @pet.id)
     else
-      flash[:error] = pet.errors.full_messages
-      redirect_to user_edit_pet_path
+      flash[:error] = @pet.errors.full_messages
+      redirect_to user_edit_pet_path(id: @pet.id)
     end
   end
 

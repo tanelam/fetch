@@ -1,0 +1,22 @@
+
+<h4>Create Appointment with <%= @pet.name %></h4>
+<br/>
+<% if flash[:error] %>
+ <ul>
+   <% flash[:error].each do |error| %>
+   <li><%= error %></li>
+   <% end %>
+ </ul>
+<% end %>
+
+<p>When would you like to meet your cuddlebuddy?</p>
+<br/>
+<%= form_for user_new_appointment_path do |f| %>
+<%= f.label "start" %>
+<%= f.datetime_field :checkin %>
+<br/><br/>
+<%= f.label "end" %>
+<%= f.datetime_field :checkout %>
+<br/>
+<%= f.submit "Make Appointment" %>
+<% end %>
