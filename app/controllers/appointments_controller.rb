@@ -18,11 +18,14 @@ before_action :current_user, only: [:index, :new, :edit, :create]
 
   def create
     @appointment = Appointment.new(appointment_params)
-    if @appointment.save
+    # @pet = @appointment.cuddle_buddy
+    if @appointment.valid?
+      @appointment.save
       redirect_to appointment_path(@appointment)
     else
+      @pet = @appointment.cuddle_buddy
       flash[:error] = @appointment.errors.full_messages
-      redirect_to new_appointment_path(@appointment)
+      redirect_to new_appointment_path(user_id: @user.id, pet_id: @pet.id)
     end
   end
 
