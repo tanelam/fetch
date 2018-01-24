@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :user_name, uniqueness: true
   validates :user_name, uniqueness: { case_sensitive: false }
   validates :user_name, format: {without: /\s/, message:"must contain no spaces"}
+  
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 

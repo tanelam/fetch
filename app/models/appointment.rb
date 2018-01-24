@@ -11,6 +11,12 @@ class Appointment < ApplicationRecord
 
   private
 
+  # def same_dates
+  #   if checkin == checkout
+  #     errors.add(:appointment, "How long would you like to hang out with your cuddle buddy?")
+  #   end
+  # end
+
   def valid_dates
    # if self.checkin && self.checkout
      if checkin > checkout || checkin == checkout
@@ -19,13 +25,13 @@ class Appointment < ApplicationRecord
    # end
   end
 
- def available_dates
-   if self.checkin && self.checkout
-    if (self.checkin <= checkout ) && (checkin <= self.checkout)
-      byebug
-       errors.add(:appointment, "Not available these dates :(")
-     end
-   end
-  end
+ # def available_dates
+ #   if self.checkin && self.checkout
+ #    if (self.checkin <= checkout ) && (checkin <= self.checkout)
+ #      byebug
+ #       errors.add(:appointment, "Not available these dates :(")
+ #     end
+ #   end
+ #  end
 
 end

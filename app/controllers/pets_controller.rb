@@ -3,6 +3,7 @@ class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
   before_action :set_pets, only: [:index]
   before_action :current_user, only: [:index, :show, :new, :create, :edit, :destroy]
+
   # before_action :require_login
 
   def index
@@ -51,13 +52,13 @@ class PetsController < ApplicationController
 
   private
 
+  # def require_login
+  #   return head(:forbidden) unless session.include? :user_id
+  # end
+
   def current_user
     @user = User.find_by(id: session[:user_id])
   end
-
-  def require_login
-     return head(:forbidden) unless session.include? :user_id
-   end
 
   def set_pet
     @pet = Pet.find_by(id: params[:id])

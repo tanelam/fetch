@@ -10,16 +10,20 @@ Rails.application.routes.draw do
    post   '/login',   to: 'sessions#create'
    delete '/logout',  to: 'sessions#destroy'
 
-  post '/appointments/new', to: 'appointments#new', as: 'trial'
-  resources :pets, only: [:index, :show]
+  post '/appointments/new', to: 'appointments#new'
+
+  resources :pets, only: [:show, :index]
+
+  resources :appointments
+  resources :sessions, only: [:new, :create, :destroy]
+
+
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy]  do
     get "/pets", to: 'users#pets'
     get '/pets/:id/edit', to: 'pets#edit', as: "edit_pet"
     resources :pets, shallow: true, only: [:new, :create, :update, :destroy]
   end
 
-  resources :appointments
-  resources :sessions, only: [:new, :create, :destroy]
 end
 
    # post '/reroute', to: 'application#reroute'

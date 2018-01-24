@@ -4,7 +4,7 @@ class AppointmentsController < ApplicationController
 
 before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 before_action :set_appointments, only: [:index]
-before_action :current_user, only: [:index, :new, :edit, :create]
+before_action :current_user, only: [:index, :new, :edit]
 
   def index
     @your_appointments = @appointments.select{|appointment| appointment.sitter_id == @user.id }
@@ -18,7 +18,6 @@ before_action :current_user, only: [:index, :new, :edit, :create]
 
   def create
     @appointment = Appointment.new(appointment_params)
-    # @pet = @appointment.cuddle_buddy
     if @appointment.valid?
       @appointment.save
       redirect_to appointment_path(@appointment)
@@ -53,6 +52,14 @@ before_action :current_user, only: [:index, :new, :edit, :create]
   end
 
   private
+
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
+  end
+
+  def get_pet
+    @pet = Pet.find_by(id: params[:pet_id])
+  end
 
   def current_user
     @user = User.find_by(id: session[:user_id])

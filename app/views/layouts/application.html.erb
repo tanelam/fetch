@@ -4,9 +4,6 @@
   <head>
     <title>Fetch</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
       <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -15,6 +12,8 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -22,21 +21,20 @@
     <div class="jumbotron">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-          <!-- <div class="navbar-header">
-            <a class="navbar-brand" href="#">CuddleBuddies</a>
-          </div> -->
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav navbar-left">
+            <% if session[:user_id] != nil %>
             <li><a href="/pets">CuddleBuddies</a></li>
-            <li><a href="/users/<%=session[:user_id]%>/pets">Your Pets</a></li>
-            <li><a href="/users/<%=session[:user_id]%>/pets/new">Add A Pet</a></li>
-            <li><a href="#">About</a></li>
-          </ul>
+              <li><a href="/users/<%=session[:user_id]%>/pets">Your Pets</a></li>
+              <li><a href="/users/<%=session[:user_id]%>/pets/new">Add A Pet</a></li>
+              <li><a href="#">About</a></li>
+            </ul>
+            <% end %>
           <ul class="nav navbar-nav navbar-right">
+            <% if session[:user_id] == nil %>
             <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <span class="glyphicon glyphicon-log-in"></span>
-
+            <% end %>
             <li><% if logged_in? %>
-            <%= link_to "Logout", sessions_path, method: :destroy %>
+            <%= link_to "Logout", '/logout', method: :delete %>
             <% else %>
             <%= link_to "Login", login_path %>
             <% end %></li>
