@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :user, only: [:show, :edit, :update, :destroy]
   before_action :user_pets, only: [:pets]
 
-
   def pets
   end
 
