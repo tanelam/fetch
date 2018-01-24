@@ -2,32 +2,30 @@
 
 <h4>Your appointment</h4>
 
+    <p>You have an appointment with: </p>
+      <img src="<%= @appointment.cuddle_buddy.pet_photo %>" />
+
+      <br/>
+
+      <%= @appointment.cuddle_buddy.name %>
 
 
-<p>You have an appointment with: </p>
-<img src="<%= @appointment.cuddle_buddy.pet_photo %>" />
+      <br/>
 
-<br/>
+    <p>Starting on: </p>
+      <%= @appointment.checkin.strftime('%A %v at %I:%M%p') %>
 
-<%= @appointment.cuddle_buddy.name %>
-
-
-<br/>
-
-<p>Starting on: </p>
-<%= @appointment.checkin.strftime('%A %v at %I:%M%p') %>
-
-<br/>
-<p>Ending on: </p>
-<%= @appointment.checkout.strftime('%A %v at %I:%M%p') %>
+      <br/>
+    <p>Ending on: </p>
+    <%= @appointment.checkout.strftime('%A %v at %I:%M%p') %>
 
 
-<%= button_to "Edit Appointment", edit_appointment_path(@appointment), method: :get %>
+    <%= button_to "Edit Appointment", edit_appointment_path(@appointment), method: :get %>
 
-<br/>
+    <br/>
 
-<br/>
+    <br/>
 
-<%= button_to @appointment, data: {confirm: 'Are you sure you want to cancel this appointment?'}, method: :delete, class: 'btn btn-default btn-danger' do %>
-Cancel Appointment
-<% end %>
+    <%= button_to @appointment, data: {confirm: 'Are you sure you want to cancel this appointment?'}, method: :delete, class: 'btn btn-default btn-danger' do %>
+    Cancel Appointment
+    <% end %>

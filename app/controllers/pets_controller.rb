@@ -2,44 +2,37 @@ class PetsController < ApplicationController
 
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
   before_action :set_pets, only: [:index]
+  before_action :current_user, only: [:index, :show, :new, :create, :edit, :destroy]
   # before_action :require_login
 
   def index
-    @user = User.find_by(id: session[:user_id])
     @not_user_pets = @pets.select{|pet| pet.owner_id != @user.id }
   end
 
   def show
     @user = User.find_by(id: session[:user_id])
-    @pet = Pet.find(params[:id])
-   # byebug
   end
 
   def new
     @pet = Pet.new
-    @user = User.find_by(id: session[:user_id])
   end
 
   def create
-    @current_user = User.find_by(id: session[:user_id])
-    @newpet = @current_user.pets.new(pet_params)
+    @newpet = @user.pets.new(pet_params)
     if @newpet.valid?
       @newpet.save
       redirect_to pet_path(id: @newpet.id)
     else
       flash[:error] = @newpet.errors.full_messages
-      redirect_to  user_pets_new_path
+      redirect_to user_pets_new_path
     end
   end
 
   def edit
-    @pet = Pet.find_by(id: params[:id])
-    @user = User.find_by(id: session[:user_id])
   end
 
   def update
     @pet.assign_attributes(pet_params)
-    # byebug
     if @pet.valid?
       @pet.update(pet_params)
       redirect_to pet_path(id: @pet.id)
@@ -50,13 +43,16 @@ class PetsController < ApplicationController
   end
 
   def destroy
-    #pets die sometimes so this one needs to be here
     flash[:notice] = "#{@pet.name} has been removed."
     @pet.destroy
-    redirect_to user_pets_path
+    redirect_to user_pets_path(@user)
   end
 
   private
+
+  def current_user
+    @user = User.find_by(id: session[:user_id])
+  end
 
   def require_login
      return head(:forbidden) unless session.include? :user_id

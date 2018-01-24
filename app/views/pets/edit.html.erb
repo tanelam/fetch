@@ -8,7 +8,7 @@
  </ul>
 <% end %>
 
-<%= form_for [@user, @pet] do |f| %>
+<%= form_for @pet do |f| %>
   <p><%= f.label :name %>
   <%= f.text_field :name %></p>
   <p><%= f.label :species %>
@@ -20,6 +20,6 @@
   <p><%= f.submit %></p>
   <% end %>
   <br/><br/>
-  <%= button_to [@user, @pet], data: {confirm: 'Are you sure you want to remove this pet?'}, method: :delete, class: 'btn btn-default btn-danger' do %>
+  <%= button_to @pet, data: {confirm: 'Are you sure you want to remove this pet?'}, method: :delete, class: 'btn btn-default btn-danger' do %>
   Remove Pet
   <% end %>

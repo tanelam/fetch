@@ -3,6 +3,12 @@ class Appointment < ApplicationRecord
   belongs_to :sitter, :class_name => "User"
   belongs_to :cuddle_buddy, :class_name => "Pet"
 
+  validates :sitter_id, presence: true
+  validates :cuddle_buddy_id, presence:true
+
+  # validate :available_dates
+  validate :valid_dates
+
   def duration
     checkin - checkout
   end
@@ -19,7 +25,8 @@ class Appointment < ApplicationRecord
 
  def available_dates
    if self.checkin && self.checkout
-    if (appointment.checkin <= checkout ) && (checkin <= appointment.checkout)
+    if (self.checkin <= checkout ) && (checkin <= self.checkout)
+      byebug
        errors.add(:appointment, "Not available these dates :(")
      end
    end

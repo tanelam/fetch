@@ -9,31 +9,29 @@ Rails.application.routes.draw do
    get    '/login',   to: 'sessions#new'
    post   '/login',   to: 'sessions#create'
    delete '/logout',  to: 'sessions#destroy'
-   # post '/reroute', to: 'application#reroute'
-
-
-  resources :pets, only: [:index, :show]
 
   post '/appointments/new', to: 'appointments#new', as: 'trial'
 
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy]  do
-    # get "/pets", to: 'users#pets'
-    #
-    # get '/pets/:id/edit', to: 'pets#edit', as: "edit_pet"
-    # get '/pets/:pet_id/appointments/new', to: 'appointments#new', as: "new_appointment"
-    # post '/pets/:pet_id/appointments/new', to: 'appointments#create', as: "create_appointment"
-    # get '/appointments', to: 'appointments#show', as: 'appointment'
-    # resources :appointments
-
+    get "/pets", to: 'users#pets'
+    get '/pets/:id/edit', to: 'pets#edit', as: "edit_pet"
     resources :pets, shallow: true, only: [:new, :create, :update, :destroy]
-    # get '/pets/new', to: 'pets#new'
-    # get '/pets/:id', to: 'pets#show', as: 'show_pet'
-    # get '/pets/:id/edit', to: 'pets#edit', as: 'pet'
-    # post '/pets', to: 'pets#create'
-    # patch '/pets/:id/edit', to: 'pets#update', as: 'edit_pet'
-    # delete '/pets/:id', to: 'pets#destroy'
+  end
 
+  resources :appointments
+  resources :sessions, only: [:new, :create, :destroy]
 end
-resources :appointments
-resources :sessions, only: [:new, :create, :destroy]
-end
+
+   # post '/reroute', to: 'application#reroute'
+
+# get '/pets/:pet_id/appointments/new', to: 'appointments#new', as: "new_appointment"
+# post '/pets/:pet_id/appointments/new', to: 'appointments#create', as: "create_appointment"
+# get '/appointments', to: 'appointments#show', as: 'appointment'
+# resources :appointments
+
+# get '/pets/new', to: 'pets#new'
+# get '/pets/:id', to: 'pets#show', as: 'show_pet'
+# get '/pets/:id/edit', to: 'pets#edit', as: 'pet'
+# post '/pets', to: 'pets#create'
+# patch '/pets/:id/edit', to: 'pets#update', as: 'edit_pet'
+# delete '/pets/:id', to: 'pets#destroy'

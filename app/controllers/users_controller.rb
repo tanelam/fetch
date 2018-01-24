@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :user, only: [:show, :edit, :update, :destroy]
-  # skip_before_action :authorized, [:new, :create]
   before_action :user_pets, only: [:pets]
 
 
@@ -43,7 +42,6 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    # log them out of web page
   end
 
   private
