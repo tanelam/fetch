@@ -1,5 +1,4 @@
-
-<h4>Create Appointment with <%= @pet.name %></h4>
+<h4>Edit Appointment with <%= @pet.name %></h4>
 <br/>
 <% if flash[:error] %>
  <ul>
@@ -19,7 +18,7 @@
   <%= f.datetime_select :checkin, {discard_year: true} %>
   <br/><br/>
   <%= f.label "end" %>
-  <%= f.datetime_select :checkout, {discard_year: true} %>
+  <%= f.datetime_select :checkout, {discard_year: true}%>
   <br/>
-  <%= f.submit "Make Appointment" %>
+  <%= f.submit "Edit Appointment" %>
 <% end %>

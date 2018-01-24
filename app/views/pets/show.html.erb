@@ -13,5 +13,5 @@
 <% if @user.id == @pet.owner_id%>
 <%= button_to "Edit Pet", user_edit_pet_path(id: @pet.id, user_id: @user.id), method: :get %>
 <% else %>
-<%= link_to "Cuddle with this Buddy", user_new_appointment_path(user_id: @user.id, pet_id: @pet.id) %>
+<%= link_to "Cuddle with this Buddy", new_appointment_path(user_id: @user.id, pet_id: @pet.id), method: :post %>
 <% end %>

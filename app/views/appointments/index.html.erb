@@ -1,0 +1,7 @@
+
+
+<% @appointments.each do |appointment| %>
+<%= link_to appointment.cuddle_buddy.name, appointment  %>
+<p>At: </p>
+<%= appointment.checkin.strftime("%A %v at %I:%M%p") %>
+<% end %>
