@@ -4,7 +4,7 @@ class AppointmentsController < ApplicationController
 
 before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 before_action :set_appointments, only: [:index]
-before_action :current_user, only: [:index, :new, :edit]
+before_action :current_user, only: [:index, :new, :edit, :create]
 
   def index
     @your_appointments = @appointments.select{|appointment| appointment.sitter_id == @user.id }

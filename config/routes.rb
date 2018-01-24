@@ -11,7 +11,9 @@ Rails.application.routes.draw do
    delete '/logout',  to: 'sessions#destroy'
 
   post '/appointments/new', to: 'appointments#new', as: 'trial'
-  resources :pets, only: [:show, :index]
+
+  resources :pets, only: [:index, :show]
+
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy]  do
     get "/pets", to: 'users#pets'
     get '/pets/:id/edit', to: 'pets#edit', as: "edit_pet"

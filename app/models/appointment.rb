@@ -3,10 +3,6 @@ class Appointment < ApplicationRecord
   belongs_to :sitter, :class_name => "User"
   belongs_to :cuddle_buddy, :class_name => "Pet"
 
-  validates :sitter_id, presence: true
-  validates :cuddle_buddy_id, presence:true
-
-  # validate :available_dates
   validate :valid_dates
 
   def duration
@@ -16,11 +12,11 @@ class Appointment < ApplicationRecord
   private
 
   def valid_dates
-   if self.checkin && self.checkout
+   # if self.checkin && self.checkout
      if checkin > checkout || checkin == checkout
        errors.add(:appointment, "Startime cannot be after Endtime.")
      end
-   end
+   # end
   end
 
  def available_dates
