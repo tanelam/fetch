@@ -1,4 +1,6 @@
-class Pet < ApplicationRecord
+class Pet < ActiveRecord::Base
+
+  validates_presence_of :name, :bio, :owner, :species
 
   mount_uploader :pet_photo, PetPhotoUploader
 
