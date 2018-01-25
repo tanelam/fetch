@@ -1,14 +1,19 @@
 
+<div class="page-header">
+<h1>Your Pets</h1>
+</div>
 
-<h4>Your Pets</h4>
-<br/>
 <% if flash[:notice] %>
+<div class="alert alert-info">
 <%= flash[:notice] %>
+</div>
 <% end %>
-<br/><br/>
+
+
+
   <figure>
     <% @user_pets.each do |pet| %>
     <img src='<%= pet.pet_photo %>' alt='missing' style="max-height: 500px; max-width: 300px"/>
-    <figcaption><b>Name: <%= link_to pet.name, pet_path(id: pet.id) %></b></figcaption>
+    <figcaption><p><%= link_to pet.name, pet_path(id: pet.id) %></p></figcaption>
       <% end %>
     </figure>

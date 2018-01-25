@@ -17,31 +17,44 @@
   </head>
 
   <body>
+
     <div class = "container" >
     <div class="jumbotron">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <ul class="nav navbar-nav navbar-left">
+
+      <div id="banner">
+          Hello world
+      </div>
+
+    <nav class="navbar navbar-default" id="ntext">
+
+        <div class="container-fluid" id="ntext">
+
+          <ul class="nav navbar-nav navbar-left" id="ntext">
             <% if session[:user_id] != nil %>
             <li><a href="/pets">CuddleBuddies</a></li>
               <li><a href="/users/<%=session[:user_id]%>/pets">Your Pets</a></li>
               <li><a href="/users/<%=session[:user_id]%>/pets/new">Add A Pet</a></li>
-              <li><a href="#">About</a></li>
+              <li><a href="/appointments">Your Appointments</a></li>
+              <li><a href="#">Help</a></li>
             </ul>
             <% end %>
-          <ul class="nav navbar-nav navbar-right">
+<!-- <span class="glyphicon glyphicon-user"></span>  -->
+          <ul class="nav navbar-nav navbar-right" id="ntext">
             <% if session[:user_id] == nil %>
-            <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/signup">Sign Up</a></li>
             <% end %>
-            <li><% if logged_in? %>
-            <%= link_to "Logout", '/logout', method: :delete %>
+            <% if logged_in? %>
+            <li><%= link_to "Logout", '/logout', method: :delete%></li>
             <% else %>
-            <%= link_to "Login", login_path %>
-            <% end %></li>
+            <li><%= link_to "Login", login_path%></li>
+            <% end %>
           </ul>
+
         </div>
     </nav>
+
     <%= yield %>
+
     </div>
     </div>
   </body>

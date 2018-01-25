@@ -13,7 +13,94 @@
  *= require_tree .
  *= require_self
  */
-/* 
-.nav navbar-nav navbar-right{
-  align: center;
+/*
+
+/*
+*/
+
+@font-face {
+font-family: kittenSwash;
+src: url('assets/KittenSwashTrial.ttf')
+local('Kitten Swash')
+local('Kitten-Swash')
+format('truetype');
+}
+
+@font-face {
+font-family: kittenSwashMonoline;
+src: url('assets/KittenSwashMonolineTrial.ttf')
+local('Kitten SwashMonoline')
+local('Kitten-SwashMonoline')
+format('truetype');
+}
+
+.jumbotron h1{
+    font-family: 'kittenSwash', sans-serif;
+    color: grey;
+}
+
+.jumbotron h3{
+    font-family: 'kittenSwash', sans-serif;
+    color: grey;
+}
+
+.jumbotron p{
+    color: grey;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    font-family: 'kittenSwash', sans-serif;
+    color: grey;
+    font-size:      1.5em;
+}
+.nav.navbar-nav.navbar-left li a {
+    font-family: 'kittenSwash', sans-serif;
+    color: grey;
+    font-size:      1.5em;
+}
+
+.navbar-default {
+  border-color: rgba(98, 175, 175, 0.32)
+}
+
+.container-fluid {
+  background-color: rgba(63, 191, 157, 0.08)
+}
+
+.jumbotron {
+  background-color: rgba(63, 191, 157, 0.08)
+}
+
+label {
+color: #B4886B;
+font-weight: bold;
+display: block;
+}
+
+a {
+  color: #3D9970;
+}
+
+a:hover {
+  color: #3D9970;
+}
+
+.jumbotron p {
+font-family: sans-serif;
+color: grey;
+display: block;
+}
+
+figure {
+    display:inline-block;
+}
+
+/* figcaption {
+    text-align: left;
+} */
+
+/*
+figcaption {
+  border: 1px dotted blue;
+  text-align: center;
 } */

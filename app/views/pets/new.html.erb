@@ -1,25 +1,20 @@
 
 <div class="page-header">
-  <h1>Add Your Pet</h1>
+  <h1>Add A Pet</h1>
 </div>
 
+<%= render "error" %>
 
-<% if flash[:error] %>
- <ul>
-   <% flash[:error].each do |error| %>
-   <li><%= error %></li>
-   <% end %>
- </ul>
-<% end %>
 
 <%= form_for [@user,@pet] do |f| %>
   <p><%= f.label :name %>
   <%= f.text_field :name %></p>
   <p><%= f.label :species %>
   <%= f.collection_select :species_id, Species.all, :id, :name %></p>
-  <%= f.file_field :pet_photo %>
-  <p><%= f.label :bio %>:</p>
-  <p><%= f.text_area :bio, cols: 50, rows: 15 %></p>
+  <p><%= f.label "Photo" %></p>
+  <%= f.file_field :pet_photo %></p>
+  <p><%= f.label :bio %></p>
+  <p><%= f.text_area :bio, cols: 30, rows: 8 %></p>
   <br/>
   <p><%= f.submit %></p>
 <% end %>

@@ -1,7 +1,8 @@
 
 
-<br/>
-<h4>All about <%= @pet.name %></h4>
+<div class="page-header">
+<h1>All about <%= @pet.name %></h1>
+</div>
 <p><img src="<%= @pet.pet_photo %>" style="max-height: 900px; max-width: 500px" /></p>
 <p>Name: <%= @pet.name %></p>
 <p>A Very Cuddly: <%= @pet.species.name %></p>
@@ -13,5 +14,5 @@
 <% if @user.id == @pet.owner_id%>
 <%= button_to "Edit Pet", user_edit_pet_path(id: @pet.id, user_id: @user.id), method: :get %>
 <% else %>
-<%= link_to "Cuddle with this Buddy", new_appointment_path(user_id: @user.id, pet_id: @pet.id), method: :post %>
+<%= button_to "Cuddle with this Buddy", new_appointment_path(user_id: @user.id, pet_id: @pet.id), method: :post %>
 <% end %>

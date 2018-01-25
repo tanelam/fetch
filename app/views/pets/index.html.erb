@@ -7,7 +7,10 @@
 
 <figure>
   <% @not_user_pets.each do |pet| %>
+  <%= link_to pet_path(pet) do %>
   <img src='<%= pet.pet_photo %>' alt='missing' style="max-height: 500px; max-width: 300px"/>
-  <figcaption><b>Name: <%= link_to pet.name, pet_path(pet) %></b></figcaption>
+  <figcaption><p><%= pet.name%>
+    <% end %>
+  </p></figcaption>
     <% end %>
 </figure>
