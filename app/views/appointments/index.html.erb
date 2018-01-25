@@ -3,6 +3,11 @@
   <h1>Your Upcoming Appointments</h1>
 </div>
 
+
+<% if @your_appointments.length == 0 %>
+<p>No upcoming cuddles!</p>
+<p>Make a cuddle appointment today!</p>
+<% end %>
 <% @your_appointments.each do |appointment| %>
 <%= link_to appointment do %>
 <p><img src='<%= appointment.cuddle_buddy.pet_photo %>' alt='missing' style="max-height: 500px; max-width: 300px"/></p>

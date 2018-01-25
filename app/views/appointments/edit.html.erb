@@ -5,8 +5,10 @@
 
 <%= render "error" %>
 
-<p>When would you like to meet your cuddlebuddy?</p>
-
+<p style="color:#B4886B;">When would you like to meet your cuddlebuddy?<br/>
+<p>Please limit cuddles to 2 hours or less and not too close to bedtime.<br/>
+Start times must be between 7am to 6pm</p>
+</br>
 
 <%= form_for @appointment do |f| %>
   <%= f.hidden_field :sitter_id, :value => @user.id %>
