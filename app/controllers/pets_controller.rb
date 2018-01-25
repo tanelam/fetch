@@ -4,8 +4,6 @@ class PetsController < ApplicationController
   before_action :set_pets, only: [:index]
   before_action :current_user, only: [:index, :show, :update, :new, :create, :edit, :destroy]
 
-  # before_action :require_login
-
   def index
     @not_user_pets = @pets.select{|pet| pet.owner_id != @user.id }
   end

@@ -28,7 +28,7 @@ format('truetype');
 
 @font-face {
 font-family: kittenSwashMonoline;
-src: url('assets/KittenSwashMonolineTrial.ttf')
+src: font-url('assets/KittenSwashMonolineTrial.ttf')
 local('Kitten SwashMonoline')
 local('Kitten-SwashMonoline')
 format('truetype');
