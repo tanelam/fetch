@@ -1,0 +1,7 @@
+<h1> Your Pet's Appointments</h1>
+
+
+<% @array_of_appointments.each do |appointment| %>
+<p><%= link_to appointment.cuddle_buddy.name, appointment %></p>
+
+<% end %>
