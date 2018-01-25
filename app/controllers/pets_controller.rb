@@ -4,8 +4,6 @@ class PetsController < ApplicationController
   before_action :set_pets, only: [:index, :appointments]
   before_action :current_user, only: [:index, :show, :update, :new, :create, :edit, :destroy, :appointments]
 
-<<<<<<< HEAD
-  # before_action :require_login
 
   def appointments
     @appointments = Appointment.all #gives you your appointments
@@ -14,8 +12,6 @@ class PetsController < ApplicationController
     @array_of_appointments = @user_pets_appointments.flatten!
   end
 
-=======
->>>>>>> ef2481dec3b8b0aa413c800c0b7b1414f285cbee
   def index
     @not_user_pets = @pets.select{|pet| pet.owner_id != @user.id }
   end
