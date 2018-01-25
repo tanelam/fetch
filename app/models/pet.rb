@@ -11,4 +11,13 @@ class Pet < ApplicationRecord
 
   validates :name, :species_id, :bio, presence: true
 
+
+  def how_many_pets
+  end
+
+  def avg_appointment_length 
+  end
+
+  def how_many_users
+  end
 end

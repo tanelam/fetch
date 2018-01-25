@@ -3,7 +3,9 @@ class Appointment < ApplicationRecord
   belongs_to :sitter, :class_name => "User"
   belongs_to :cuddle_buddy, :class_name => "Pet"
 
-  validate :valid_dates
+  validate :valid_dates, :two_hours, :bedtime
+  # validate :two_hours
+  # validate :bedtime
 
   def duration
     checkin - checkout
@@ -11,18 +13,25 @@ class Appointment < ApplicationRecord
 
   private
 
-  # def same_dates
-  #   if checkin == checkout
-  #     errors.add(:appointment, "How long would you like to hang out with your cuddle buddy?")
-  #   end
-  # end
+  def two_hours
+    if checkout > (checkin.to_time + 2.hours)
+      errors.add(:base, "Please limit cuddles to two hours.")
+    end
+  end
+
+
+  def bedtime
+    checkin_hour = checkin.to_time.hour
+    if checkin_hour < 8 || checkin_hour > 18
+       errors.add(:base, "Only available from 7am to 6pm.")
+    end
+  end
+
 
   def valid_dates
-   # if self.checkin && self.checkout
      if checkin > checkout || checkin == checkout
-       errors.add(:appointment, "Startime cannot be after Endtime.")
+       errors.add(:base, "End time must be after start time.")
      end
-   # end
   end
 
  # def available_dates

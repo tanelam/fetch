@@ -32,11 +32,11 @@
           <ul class="nav navbar-nav navbar-left" id="ntext">
             <% if session[:user_id] != nil %>
             <li><a href="/pets">CuddleBuddies</a></li>
+            <li><a href="/appointments">Upcoming Cuddles</a></li>
               <li><a href="/users/<%=session[:user_id]%>/pets">Your Pets</a></li>
               <li><a href="/users/<%=session[:user_id]%>/pets/new">Add A Pet</a></li>
-              <li><a href="/appointments">Your Appointments</a></li>
             <% if current_user.admin? %>
-            <li><a href="/analytics">Your Site Analytics</a></li>
+            <li><a href="/analytics">Analytics</a></li>
             <% else %>
               <li><a href="/help">Help</a></li>
               <% end %>
