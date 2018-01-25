@@ -2,6 +2,14 @@
 <div class="page-header">
   <h1>Welcome Admin</h1>
 </div>
-<p>How many pets</p>
-<p>How many users</p>
-<p>Average amount of pets per owner</p>
+<p style="color: #B4886B">Total Animal Count <b><%= Pet.all.count %></b>
+
+<p style="color: #B4886B">Dogs <b><%= dogs %></b></p>
+<p style="color: #B4886B">Cats <b><%= cats %></b></p>
+<p style="color: #B4886B">Rabbits <b><%= rabbits %></b></p>
+<p style="color: #B4886B">Lizards <b><%= lizards %></b></p>
+<br/><br/>
+<p style="color: #B4886B">Total User Count<b> <%= User.all.count %></b>
+<br/>
+<p style="color: #B4886B">Most Requested<b> <%= most_popular_animal %></b></p>
+<p style="color: #B4886B">Average Appointment Length <b><%= avg_appointment_length %> hours </b></p>

@@ -4,7 +4,6 @@ class PetsController < ApplicationController
   before_action :set_pets, only: [:index, :appointments]
   before_action :current_user, only: [:index, :show, :update, :new, :create, :edit, :destroy, :appointments]
 
-  # before_action :require_login
 
   def appointments
     @appointments = Appointment.all #gives you your appointments
