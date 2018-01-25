@@ -1,10 +1,17 @@
 class PetsController < ApplicationController
 
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
-  before_action :set_pets, only: [:index]
-  before_action :current_user, only: [:index, :show, :update, :new, :create, :edit, :destroy]
+  before_action :set_pets, only: [:index, :appointments]
+  before_action :current_user, only: [:index, :show, :update, :new, :create, :edit, :destroy, :appointments]
 
   # before_action :require_login
+
+  def appointments
+    @appointments = Appointment.all #gives you your appointments
+    @my_pets = @pets.select { |pet| pet.owner_id == @user.id  }#getting my pets
+    @user_pets_appointments = @my_pets.map { |pet| pet.appointments }
+    @array_of_appointments = @user_pets_appointments.flatten!
+  end
 
   def index
     @not_user_pets = @pets.select{|pet| pet.owner_id != @user.id }
@@ -12,7 +19,7 @@ class PetsController < ApplicationController
 
   def show
     @user = User.find_by(id: session[:user_id])
-    @pet =Pet.find_by(id: params[:id])
+    @pet = Pet.find_by(id: params[:id])
   end
 
   def new

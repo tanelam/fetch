@@ -91,7 +91,11 @@ color: grey;
 display: block;
 }
 
-figure {
+/* figure {
+    display:inline-block;
+} */
+
+figure + img src= {
     display:inline-block;
 }
 

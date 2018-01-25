@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy]  do
     get "/pets", to: 'users#pets'
     get '/pets/:id/edit', to: 'pets#edit', as: "edit_pet"
+    get '/pets/appointments', to: 'pets#appointments', as: "pets_appointments"
     # get "/appointments", to: 'users#appointments'
     resources :pets, shallow: true, only: [:new, :create, :update, :destroy]
   end
