@@ -35,7 +35,7 @@
               <li><a href="/users/<%=session[:user_id]%>/pets">Your Pets</a></li>
               <li><a href="/users/<%=session[:user_id]%>/pets/new">Add A Pet</a></li>
               <li><a href="/appointments">Your Appointments</a></li>
-              <li><a href="#">Help</a></li>
+              <li><a href="/help">Help</a></li>
             </ul>
             <% end %>
 <!-- <span class="glyphicon glyphicon-user"></span>  -->
@@ -47,6 +47,7 @@
             <li><%= link_to "Logout", '/logout', method: :delete%></li>
             <% else %>
             <li><%= link_to "Login", login_path%></li>
+            <li><a href="/help">Help</a></li>
             <% end %>
           </ul>
 
