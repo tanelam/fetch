@@ -4,11 +4,9 @@ class Appointment < ApplicationRecord
   belongs_to :cuddle_buddy, :class_name => "Pet"
 
   validate :valid_dates, :two_hours, :bedtime
-  # validate :two_hours
-  # validate :bedtime
 
   def duration
-    checkin - checkout
+   checkout.to_time.hour - checkin.to_time.hour
   end
 
   private
