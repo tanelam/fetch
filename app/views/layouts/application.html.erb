@@ -35,8 +35,13 @@
               <li><a href="/users/<%=session[:user_id]%>/pets">Your Pets</a></li>
               <li><a href="/users/<%=session[:user_id]%>/pets/new">Add A Pet</a></li>
               <li><a href="/appointments">Your Appointments</a></li>
+            <% if current_user.admin? %>
+            <li><a href="/analytics">Your Site Analytics</a></li>
+            <% else %>
               <li><a href="/help">Help</a></li>
+              <% end %>
             </ul>
+
             <% end %>
 <!-- <span class="glyphicon glyphicon-user"></span>  -->
           <ul class="nav navbar-nav navbar-right" id="ntext">

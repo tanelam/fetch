@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       log_in @user
-      flash[:success] = "Welcome to the Sample App!"
       redirect_to user_path(@user)
     else
       flash[:error] = @user.errors.full_messages

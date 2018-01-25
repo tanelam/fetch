@@ -10,4 +10,10 @@ skip_before_action :require_login, only: [:help, :home]
     render :help
   end
 
+  def analytics
+    if current_user.admin?
+      render :analytics
+    end
+  end
+
 end
