@@ -20,7 +20,7 @@
 
 @font-face {
 font-family: kittenSwash;
-src: url('assets/KittenSwashTrial.ttf')
+src: font-url('assets/KittenSwashTrial.ttf')
 local('Kitten Swash')
 local('Kitten-Swash')
 format('truetype');
