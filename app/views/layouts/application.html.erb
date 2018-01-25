@@ -35,11 +35,9 @@
             <li><a href="/appointments">Upcoming Cuddles</a></li>
               <li><a href="/users/<%=session[:user_id]%>/pets">Your Pets</a></li>
               <li><a href="/users/<%=session[:user_id]%>/pets/new">Add A Pet</a></li>
-<<<<<<< HEAD
+
               <li><a href="/appointments">Your Appointments</a></li>
               <li><a href="/users/<%=session[:user_id]%>/pets/appointments">Your Pets Appointments</a></li>
-=======
->>>>>>> ef2481dec3b8b0aa413c800c0b7b1414f285cbee
             <% if current_user.admin? %>
             <li><a href="/analytics">Analytics</a></li>
             <% else %>
