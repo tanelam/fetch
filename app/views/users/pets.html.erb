@@ -3,7 +3,8 @@
 <h1>Your Pets</h1>
 </div>
 <div class="page-header">
-<p>See Your Pet's Appointments</p>
+
+<p><%= link_to "Your Pets Appointments", user_pets_appointments_path %></p>
 </div>
 <% if flash[:notice] %>
 <div class="alert alert-info">
