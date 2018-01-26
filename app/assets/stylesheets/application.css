@@ -90,21 +90,14 @@ font-family: sans-serif;
 color: grey;
 display: block;
 }
-
-/* figure {
-    display:inline-block;
-} */
-
-figure + img src= {
-    display:inline-block;
-}
-
-/* figcaption {
-    text-align: left;
-} */
-
 /*
-figcaption {
-  border: 1px dotted blue;
-  text-align: center;
+.thumbnail img {
+    height:250px;
+    width:100%;
 } */
+
+img {
+    max-height: 150px;
+    width: 100%;
+    object-fit: cover;
+}

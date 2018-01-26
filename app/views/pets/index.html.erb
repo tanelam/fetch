@@ -3,14 +3,20 @@
 <div class="page-header">
   <h1>All CuddleBuddies</h1>
 </div>
+<div class="page-header">
+<%= form_tag pets_path, method: 'get' do %>
+<p>Search by species <%= select_tag "species", options_from_collection_for_select(Species.all, "id", "name"),  { :include_blank => true , :class => "species_select"} %>
+
+  <%= submit_tag 'Filter' %>
+  <% end %>
+</div>
 
 <div class="container text-center">
   <div class="row">
-
       <% @not_user_pets.each do |pet| %>
-        <div class="col-sm-4 ">
+      <div class="col-sm-4 " sytle ="overflow: hidden;">
       <%= link_to pet_path(pet) do %>
-          <img src='<%= pet.pet_photo %>' class="thumbnail img-responsive danger" style="max-height: 500px; max-width: 300px"/>
+          <img src='<%= pet.pet_photo %>' class="thumbnail img-responsive danger"/>
           <p><%= pet.name%></p>
         </div>
         <% end %>

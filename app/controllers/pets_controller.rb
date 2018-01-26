@@ -13,7 +13,13 @@ class PetsController < ApplicationController
   end
 
   def index
-    @not_user_pets = @pets.select{|pet| pet.owner_id != @user.id }
+    if params[:species]
+      @not_user_pets = @pets.select do |pet|
+        (pet.owner_id != @user.id) && (pet.species_id == params[:species].to_i)
+      end
+    else
+      @not_user_pets = @pets.select{|pet| pet.owner_id != @user.id }
+    end
   end
 
   def show
