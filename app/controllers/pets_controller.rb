@@ -10,6 +10,7 @@ class PetsController < ApplicationController
     @my_pets = @pets.select { |pet| pet.owner_id == @user.id  }#getting my pets
     @user_pets_appointments = @my_pets.map { |pet| pet.appointments }
     @array_of_appointments = @user_pets_appointments.flatten!
+    byebug  
   end
 
   def index

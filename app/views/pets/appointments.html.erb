@@ -1,7 +1,14 @@
-<h1> Your Pet's Appointments</h1>
 
+<div class="page-header">
+<h1> Your Pet's Appointments</h1>
+</div>
 
 <% @array_of_appointments.each do |appointment| %>
-<p><%= link_to appointment.cuddle_buddy.name, appointment %></p>
-
+<ul>
+<li style= "font-size:large; font-weight:bold; color:#B4886B;">
+  <%= appointment.cuddle_buddy.name%></li>
+  <ul>
+    <li style = "font-size:medium;"><%= link_to appointment.checkin.strftime("%A %v at %I:%M%p"), appointment %></li>
+  </ul>
+</ul>
 <% end %>
