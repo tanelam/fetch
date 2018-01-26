@@ -4,13 +4,16 @@
   <h1>All CuddleBuddies</h1>
 </div>
 
+<div class="container text-center">
+  <div class="row">
 
-<figure>
-  <% @not_user_pets.each do |pet| %>
-  <%= link_to pet_path(pet) do %>
-  <img src='<%= pet.pet_photo %>' alt='missing' style="max-height: 500px; max-width: 300px"/>
-  <figcaption><p><%= pet.name%>
-    <% end %>
-  </p></figcaption>
-    <% end %>
-</figure>
+      <% @not_user_pets.each do |pet| %>
+        <div class="col-sm-4 ">
+      <%= link_to pet_path(pet) do %>
+          <img src='<%= pet.pet_photo %>' class="thumbnail img-responsive danger" style="max-height: 500px; max-width: 300px"/>
+          <%= pet.name%>
+        </div>
+        <% end %>
+      <% end %>
+  </div>
+</div>
