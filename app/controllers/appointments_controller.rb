@@ -38,6 +38,7 @@ before_action :current_user, only: [:index, :create, :update, :new, :edit]
     @appointment.assign_attributes(appointment_params)
     if @appointment.valid?
       @appointment.update(appointment_params)
+      flash[:success] = "A notification has been sent to owner and sitter."
       redirect_to appointment_path(@appointment)
     else
       flash[:error] = @appointment.errors.full_messages
