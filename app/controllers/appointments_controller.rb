@@ -48,6 +48,7 @@ before_action :current_user, only: [:index, :create, :update, :new, :edit]
 
   def destroy
     @appointment.destroy
+    flash[:success] = "A notification has been sent to owner and sitter."
     redirect_to appointments_path
   end
 
