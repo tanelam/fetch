@@ -12,11 +12,15 @@
 </div>
 <% end %>
 
+<div class="container text-center">
+  <div class="row">
 
-
-  <figure>
     <% @user_pets.each do |pet| %>
-    <img src='<%= pet.pet_photo %>' alt='missing' style="max-height: 500px; max-width: 300px"/>
-    <figcaption><p><%= link_to pet.name, pet_path(id: pet.id) %></p></figcaption>
-      <% end %>
-    </figure>
+    <div class="col-sm-4 ">
+    <img src='<%= pet.pet_photo %>' class="thumbnail img-responsive danger" style="max-height: 500px; max-width: 300px"/>
+    <p><%= link_to pet.name, pet_path(id: pet.id) %></p>
+
+    </div>
+    <% end %>
+  </div>
+</div>

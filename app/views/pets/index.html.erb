@@ -11,7 +11,7 @@
         <div class="col-sm-4 ">
       <%= link_to pet_path(pet) do %>
           <img src='<%= pet.pet_photo %>' class="thumbnail img-responsive danger" style="max-height: 500px; max-width: 300px"/>
-          <%= pet.name%>
+          <p><%= pet.name%></p>
         </div>
         <% end %>
       <% end %>
