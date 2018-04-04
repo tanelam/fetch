@@ -1,8 +1,12 @@
 class User < ApplicationRecord
   has_secure_password
+
   validates_presence_of :password, :user_name
+
   has_many :pets, :foreign_key => 'owner_id'
+
   has_many :appointments, :foreign_key => 'sitter_id'
+
   has_many :cuddle_buddies, :class_name => "Pet", :through => :appointments
 
   validates :user_name, presence: true

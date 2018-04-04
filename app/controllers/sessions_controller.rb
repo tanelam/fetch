@@ -1,9 +1,7 @@
+
+
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
-
-  def new
-    # byebug
-  end
 
   def create
     @user = User.find_by(user_name: params[:user_name])
@@ -18,7 +16,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
-    # log_out
     redirect_to login_path
   end
 
