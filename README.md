@@ -2,6 +2,8 @@
 
 Flatiron School Mod 2 final project. It's a free "cuddle buddy" pet service, connecting humans seeking cuddles to cuddly creatures. 
 
+![fetch-splash](fetch-splash.jpg)
+
 ## Built With
 
 * Ruby on Rails 
