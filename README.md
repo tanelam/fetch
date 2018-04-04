@@ -1,24 +1,24 @@
-# README
+# Fetch
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Flatiron School Mod 2 final project. It's a free "cuddle buddy" pet service, connecting humans seeking cuddles to cuddly creatures. 
 
-Things you may want to cover:
+## Built With
 
-* Ruby version
+* Ruby on Rails 
+* Photo uploads with carrierwave
 
-* System dependencies
+## Prerequisites
 
-* Configuration
+* Ruby v5.1.4
 
-* Database creation
+## Setup 
 
-* Database initialization
+1. Fork and Clone this repo - https://github.com/brianabaker/fetch
+2. Install gems `bundle install`
+3. Setup Database `rake db:create`, then run `rake db:migrate`
+4. Start your server `rails s` 
+5. Navigate to http://localhost:3000 
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Contributors 
+* [Briana Baker](https://github.com/brianabaker/)
+* [Tania Aparicio](https://github.com/tanelam)
