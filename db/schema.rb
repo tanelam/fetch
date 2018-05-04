@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180125180230) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "appointments", force: :cascade do |t|
     t.integer "cuddle_buddy_id"
     t.integer "sitter_id"
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 20180125180230) do
     t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "species_id"
+    t.bigint "species_id"
     t.text "bio"
     t.string "pet_photo"
     t.index ["species_id"], name: "index_pets_on_species_id"
@@ -46,4 +49,5 @@ ActiveRecord::Schema.define(version: 20180125180230) do
     t.boolean "admin", default: false
   end
 
+  add_foreign_key "pets", "species"
 end
