@@ -18,6 +18,7 @@ Flatiron School Mod 2 final project. It's a free "cuddle buddy" pet service, con
 1. Clone this repo - https://github.com/tanelam/fetch
 2. Install gems `bundle install`
 3. Setup Database `rake db:create`, then run `rake db:migrate`
+5. Seed Database `rake db:seed`
 4. Start your server `rails s` 
 5. Navigate to http://localhost:3000 
 
