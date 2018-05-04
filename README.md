@@ -4,8 +4,6 @@ Flatiron School Mod 2 final project. It's a free "cuddle buddy" pet service, con
 
 ![fetch-splash](fetch-splash2.png)
 
--[Fetch Demo Video](https://youtu.be/8c3Kuuif0fQ)
-
 ## Built With
 
 * Ruby on Rails 
