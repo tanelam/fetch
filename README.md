@@ -4,8 +4,6 @@ Flatiron School Mod 2 final project. It's a free "cuddle buddy" pet service, con
 
 ![fetch-splash](fetch-splash2.png)
 
-[Fetch Demo Video](https://youtu.be/8c3Kuuif0fQ)
-
 ## Built With
 
 * Ruby on Rails 
@@ -17,7 +15,7 @@ Flatiron School Mod 2 final project. It's a free "cuddle buddy" pet service, con
 
 ## Setup 
 
-1. Fork and Clone this repo - https://github.com/brianabaker/fetch
+1. Fork and Clone this repo - https://github.com/tanelam/fetch
 2. Install gems `bundle install`
 3. Setup Database `rake db:create`, then run `rake db:migrate`
 4. Start your server `rails s` 
