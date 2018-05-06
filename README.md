@@ -4,7 +4,7 @@ Flatiron School Mod 2 final project. It's a free "cuddle buddy" pet service, con
 
 ![fetch-splash](fetch-splash2.png)
 
-[Fetch Demo Video](https://www.youtube.com/watch?v=GEMqzUgNWbw&t=2s)
+[Fetch Demo Video](https://youtu.be/GEMqzUgNWbw)
 
 ## Built With
 
